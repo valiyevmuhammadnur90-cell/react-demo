@@ -1,21 +1,22 @@
-import { useState } from "react";
-import Category from "./components/Categories";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
+import SignIn from "./components/pages/Sign-in";
 import Navbar from "./components/Navbar";
-import Navigation from "./components/Routes";
 
 function App() {
-  const [dark, setDark] = useState(false);
-
-  const handleDark = () => {
-    setDark(!dark);
-  };
-
   return (
-    <div className={dark ? "dark" : "light"}>
-      <Navbar dark={dark} onClickDark={handleDark} />
-      <Category />
+    <div>
+      <Navbar />
 
-      <Navigation />
+      {/* ------------ Routes ------------ */}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route />
+      </Routes>
     </div>
   );
 }

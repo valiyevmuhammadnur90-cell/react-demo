@@ -1,8 +1,5 @@
 import { Tabs } from "antd";
 
-const onChange = (key) => {
-  console.log(key);
-};
 const items = [
   {
     key: "1",
@@ -51,9 +48,6 @@ const items = [
   },
 ];
 
-const Category = () => (
-  <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
-);
-2;
+const Category = () => <Tabs defaultActiveKey="1" items={items} />;
 
 export default Category;
