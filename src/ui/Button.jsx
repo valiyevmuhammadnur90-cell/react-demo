@@ -5,13 +5,13 @@ export default function Button() {
   const navigate = useNavigate();
 
   function navigation() {
-    navigate("/sign-in");
+    navigate("/sign-up");
   }
 
   return (
     <div>
       <button onClick={navigation}>
-        Sign in <RightOutlined className="icon" />
+        Sign up <DoubleRightOutlined className="icon" />
       </button>
     </div>
   );
@@ -27,7 +27,7 @@ export function LoginButton() {
   return (
     <div>
       <button onClick={naviLoginPage}>
-        Login <DoubleRightOutlined />
+        Login <RightOutlined className="icon" />
       </button>
     </div>
   );

@@ -148,7 +148,7 @@ body {
   top: 50%;
   left: 60%;
 }
-.signin-page {
+.signup-page {
   position: relative;
   height: 100vh;
   width: 100%;
@@ -158,7 +158,7 @@ body {
   align-items: center;
   overflow: hidden;
 }
-.signin-card {
+.signup-card {
   position: relative;
   z-index: 10;
   width: 340px;
@@ -170,11 +170,11 @@ body {
   text-align: center;
   color: white;
 }
-.signin-card h2 {
+.signup-card h2 {
   margin-bottom: 25px;
   font-weight: 600;
 }
-.signin-card input {
+.signup-card input {
   width: 100%;
   padding: 13px;
   margin-bottom: 15px;
@@ -184,10 +184,10 @@ body {
   background: rgba(255, 255, 255, 0.18);
   color: white;
 }
-.signin-card input::placeholder {
+.signup-card input::placeholder {
   color: rgba(255, 255, 255, 0.65);
 }
-.signin-card button {
+.signup-card button {
   width: 100%;
   padding: 14px;
   border-radius: 16px;
@@ -199,7 +199,7 @@ body {
   background: linear-gradient(135deg, #ff512f, #dd2476);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.signin-card button:hover {
+.signup-card button:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(221, 36, 118, 0.6);
 }
