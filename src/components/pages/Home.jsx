@@ -1,9 +1,9 @@
-import Category from "../Categories";
+import Main from "../Main";
 
 function Home() {
   return (
     <div>
-      <Category />
+      <Main />
     </div>
   );
 }

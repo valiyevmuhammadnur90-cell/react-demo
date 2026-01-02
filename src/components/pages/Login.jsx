@@ -28,7 +28,7 @@ function Login() {
   };
 
   return (
-    <div className="page">
+    <div className="login-page">
       {/* Background blobs */}
       <div className="blob blob-1"></div>
       <div className="blob blob-2"></div>

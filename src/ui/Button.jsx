@@ -26,7 +26,7 @@ export function LoginButton() {
 
   return (
     <div>
-      <button onClick={naviLoginPage}>
+      <button className="login-btn" onClick={naviLoginPage}>
         Login <RightOutlined className="icon" />
       </button>
     </div>
