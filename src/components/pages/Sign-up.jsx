@@ -1,30 +1,51 @@
 import { useMutation } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import register from "../../services/service";
 import { message } from "antd";
+import register from "../../services/service";
+import { useAuth } from "../../context/AuthContext";
 
 function SignUp() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
+
   const regMutation = useMutation({
     mutationFn: register,
-    onSuccess: () => {
+    onSuccess: (res) => {
       message.success("Account created successfully!");
+
+      if (res?.token) {
+        login(res.token);
+      } else {
+        login("temp-token");
+      }
+
       navigate("/");
     },
+    onError: (err) => {
+      message.error(err?.response?.data?.message || "Registration failed");
+    },
   });
+
   const onFinish = () => {
+    if (!formData.username || !formData.email || !formData.password) {
+      message.warning("Please fill all fields");
+      return;
+    }
+
     regMutation.mutate(formData);
   };
 
@@ -41,6 +62,7 @@ function SignUp() {
           name="username"
           type="text"
           placeholder="Username"
+          value={formData.username}
           onChange={handleChange}
         />
 
@@ -48,6 +70,7 @@ function SignUp() {
           name="email"
           type="email"
           placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
         />
 
@@ -55,10 +78,13 @@ function SignUp() {
           name="password"
           type="password"
           placeholder="Password"
+          value={formData.password}
           onChange={handleChange}
         />
 
-        <button onClick={onFinish}>Join the Quiz</button>
+        <button onClick={onFinish} disabled={regMutation.isPending}>
+          {regMutation.isPending ? "Creating..." : "Join the Quiz"}
+        </button>
 
         <p className="hint">
           Already have an account? <Link to="/login">Login</Link>
